@@ -1,0 +1,6 @@
+--require ts-node/register
+--require test/helper.ts
+--reporter dot
+--recursive
+--exit
+test/**/*.ts
