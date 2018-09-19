@@ -1,6 +1,24 @@
 import Validator, { ValidationError as ValidatarError } from '@shortlyster/validatar';
 import { Controller, ValidationError } from '@shortlyster/mongalisa';
 
+const isPlainObject = (value: any): boolean =>
+  typeof value === 'object' && value !== null && value.toString() === '[object Object]';
+
+const deepConvertDates = (data: any): any => {
+  if (Array.isArray(data)) {
+    return data.map(deepConvertDates);
+  } else if (isPlainObject(data)) {
+    return Object.keys(data).reduce((clone, key) => {
+      clone[key] = deepConvertDates(data[key]);
+      return clone;
+    }, {} as any);
+  } else if (data instanceof Date) {
+    return data.toJSON();
+  } else {
+    return data;
+  }
+}
+
 export default () => function jsonSchemaValidator<T>(controller: Controller<T>): void {
   const { schema } = controller.Model as any;
   const validator = new Validator(schema);
@@ -9,7 +27,7 @@ export default () => function jsonSchemaValidator<T>(controller: Controller<T>):
 
   controller.validate = async function(data: Partial<T>) {
     try {
-      validator.validate(data);
+      validator.validate(deepConvertDates(data));
     } catch (error) {
       if (error instanceof ValidatarError) {
         throw new ValidationError(error.message);

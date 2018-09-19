@@ -11,6 +11,8 @@ class User {
 
   password?: string;
 
+  createdAt?: Date;
+
   static schema = {
     type: 'object',
     properties: {
@@ -20,6 +22,10 @@ class User {
       },
       password: {
         type: 'string'
+      },
+      createdAt: {
+        type: 'string',
+        format: 'date-time'
       }
     },
     required: ['email', 'password']
@@ -117,5 +123,12 @@ describe('JSON Schema validator plugin', () => {
       expect(error).to.be.instanceof(ValidationError);
       expect(error.message).to.eql('`email` is already taken');
     }
+  });
+
+  it('validates dates greyt', async () => {
+    const now = new Date();
+    const user = await users.create({ ...randomParams(), createdAt: now });
+
+    expect(user.createdAt).to.eql(now);
   });
 });
