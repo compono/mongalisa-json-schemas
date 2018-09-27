@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/Shortlyster/mongalisa-json-schemas#readme",
   "devDependencies": {
+    "@shortlyster/mongalisa": "^1.0.4",
     "@types/chai": "^4.1.4",
     "@types/mocha": "^5.2.5",
     "@types/mongodb": "^3.1.7",
@@ -49,8 +50,10 @@
     "typescript-eslint-parser": "^18.0.0"
   },
   "dependencies": {
-    "@shortlyster/mongalisa": "^1.0.0",
     "@shortlyster/validatar": "^1.0.0"
+  },
+  "peerDependencies": {
+    "@shortlyster/mongalisa": "^1.0.4"
   },
   "nyc": {
     "include": [
