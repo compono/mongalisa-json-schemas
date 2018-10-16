@@ -50,7 +50,7 @@
     "typescript-eslint-parser": "^18.0.0"
   },
   "dependencies": {
-    "@shortlyster/validatar": "^1.0.0"
+    "@shortlyster/validatar": "^1.0.2"
   },
   "peerDependencies": {
     "@shortlyster/mongalisa": "^1.0.4"
