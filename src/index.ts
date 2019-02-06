@@ -7,35 +7,43 @@ const isPlainObject = (value: any): boolean =>
 const deepConvertDates = (data: any): any => {
   if (Array.isArray(data)) {
     return data.map(deepConvertDates);
-  } else if (isPlainObject(data)) {
-    return Object.keys(data).reduce((clone, key) => {
-      clone[key] = deepConvertDates(data[key]);
-      return clone;
-    }, {} as any);
-  } else if (data instanceof Date) {
-    return data.toJSON();
-  } else {
-    return data;
   }
-}
+  if (isPlainObject(data)) {
+    return Object.keys(data).reduce(
+      (clone, key) => {
+        clone[key] = deepConvertDates(data[key]);
+        return clone;
+      },
+      {} as any
+    );
+  }
+  if (data instanceof Date) {
+    return data.toJSON();
+  }
+  return data;
+};
 
-export default () => function jsonSchemaValidator<T>(controller: Controller<T>): void {
-  const { schema } = controller.Model as any;
-  const validator = new Validator(schema);
+export default () =>
+  function jsonSchemaValidator<T>(controller: Controller<T>): void {
+    const { schema } = controller.Model as any;
 
-  const original = controller.validate;
+    if (!schema) return;
 
-  controller.validate = async function(data: Partial<T>) {
-    try {
-      validator.validate(deepConvertDates(data));
-    } catch (error) {
-      if (error instanceof ValidatarError) {
-        throw new ValidationError(error.message);
+    const validator = new Validator(schema);
+
+    const original = controller.validate;
+
+    controller.validate = async function(data: Partial<T>) {
+      try {
+        validator.validate(deepConvertDates(data));
+      } catch (error) {
+        if (error instanceof ValidatarError) {
+          throw new ValidationError(error.message);
+        }
+
+        throw error;
       }
 
-      throw error;
-    }
-
-    await original.call(this, data);
+      await original.call(this, data);
+    };
   };
-}
