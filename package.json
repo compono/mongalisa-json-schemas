@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "precommit": "lint-staged",
-    "prepush": "mocha",
+    "prepush": "make test",
     "prepare": "rm -rf dist && tsc",
     "coverage": "nyc mocha",
     "test": "mocha"
