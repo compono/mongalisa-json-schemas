@@ -4,7 +4,7 @@ import { Controller, ValidationError } from '@shortlyster/mongalisa';
 const isPlainObject = (value: any): boolean =>
   typeof value === 'object' && value !== null && value.toString() === '[object Object]';
 
-const deepConvertDates = (data: any): any => {
+export const deepConvertDates = (data: any): any => {
   if (Array.isArray(data)) {
     return data.map(deepConvertDates);
   }
