@@ -1,6 +1,6 @@
 {
   "name": "@shortlyster/mongalisa-json-schemas",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "JSON Schemas based validation support for mongalisa",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
