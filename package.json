@@ -31,10 +31,10 @@
   },
   "homepage": "https://github.com/Shortlyster/mongalisa-json-schemas#readme",
   "devDependencies": {
-    "@shortlyster/mongalisa": "^1.2.0",
+    "@shortlyster/mongalisa": "^1.4.7",
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.5",
-    "@types/mongodb": "^3.1.19",
+    "@types/mongodb": "^3.5.25",
     "@types/node": "^10.12.21",
     "chai": "^4.2.0",
     "eslint-config-shortlyster": "^2.4.4",
@@ -53,7 +53,7 @@
     "@shortlyster/validatar": "^1.0.4"
   },
   "peerDependencies": {
-    "@shortlyster/mongalisa": "^1.0.4"
+    "@shortlyster/mongalisa": "^1.4.7"
   },
   "nyc": {
     "include": [
