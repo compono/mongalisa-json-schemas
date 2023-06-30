@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
+    "outDir": "./dist/cjs",
     "target": "ES2017",
     "module": "commonjs",
+    "moduleResolution": "node",
     "noImplicitAny": true,
     "declaration": true,
     "typeRoots": [
