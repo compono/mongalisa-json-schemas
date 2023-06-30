@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import jsonSchemaSupport from '../src';
 import { Controller, ValidationError, plugin } from '@shortlyster/mongalisa';
+import jsonSchemaSupport from '../src';
 
 plugin(jsonSchemaSupport());
 
@@ -69,7 +69,7 @@ describe('JSON Schema validator plugin', () => {
     } catch (error) {
       expect(error).to.be.instanceof(ValidationError);
       expect(error.message).to.eql(
-        '`email` must look like a email, `password` this is a required field'
+        '`email` must be a valid email, `password` this is a required field'
       );
     }
   });
@@ -87,7 +87,7 @@ describe('JSON Schema validator plugin', () => {
       await users.update(user, { email: 'hack!' });
     } catch (error) {
       expect(error).to.be.instanceof(ValidationError);
-      expect(error.message).to.eql('`email` must look like a email');
+      expect(error.message).to.eql('`email` must be a valid email');
     }
   });
 
@@ -108,7 +108,7 @@ describe('JSON Schema validator plugin', () => {
     } catch (error) {
       expect(error).to.be.instanceof(ValidationError);
       expect(error.message).to.eql(
-        '`email` must look like a email, `password` this is a required field'
+        '`email` must be a valid email, `password` this is a required field'
       );
     }
   });
