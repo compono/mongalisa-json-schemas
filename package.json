@@ -2,17 +2,21 @@
   "name": "@shortlyster/mongalisa-json-schemas",
   "version": "1.1.1",
   "description": "JSON Schemas based validation support for mongalisa",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
   "files": [
-    "dist"
+    "dist/"
   ],
   "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.json && tsc -p tsconfig-esm.json",
     "precommit": "lint-staged",
     "prepush": "make test",
-    "prepare": "rm -rf dist && tsc",
     "coverage": "nyc mocha",
-    "test": "mocha"
+    "test": "mocha",
+    "change": "changeset",
+    "change:version": "changeset version",
+    "change:publish": "changeset publish"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
@@ -31,11 +35,12 @@
   },
   "homepage": "https://github.com/Shortlyster/mongalisa-json-schemas#readme",
   "devDependencies": {
-    "@shortlyster/mongalisa": "^1.4.7",
+    "@changesets/cli": "^2.26.2",
+    "@shortlyster/mongalisa": "^1.7.0",
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.5",
     "@types/mongodb": "^3.5.25",
-    "@types/node": "^10.12.21",
+    "@types/node": "^18.16.18",
     "chai": "^4.2.0",
     "eslint-config-shortlyster": "^2.4.4",
     "eslint-import-resolver-typescript": "^1.1.1",
@@ -46,14 +51,14 @@
     "nyc": "^13.2.0",
     "timekeeper": "^2.1.2",
     "ts-node": "^8.0.2",
-    "typescript": "^3.3.1",
+    "typescript": "^5.1.6",
     "typescript-eslint-parser": "^22.0.0"
   },
   "dependencies": {
-    "@shortlyster/validatar": "^1.0.4"
+    "@shortlyster/validatar": "^6.0.0"
   },
   "peerDependencies": {
-    "@shortlyster/mongalisa": "^1.4.7"
+    "@shortlyster/mongalisa": "^1.7.0"
   },
   "nyc": {
     "include": [
