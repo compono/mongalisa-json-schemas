@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { Controller, ValidationError, plugin } from '@shortlyster/mongalisa';
+import { Controller, ValidationError, plugin } from '@compono/mongalisa';
 import jsonSchemaSupport from '../src';
 
 plugin(jsonSchemaSupport());

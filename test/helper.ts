@@ -1,3 +1,3 @@
-import { connect } from '@shortlyster/mongalisa';
+import { connect } from '@compono/mongalisa';
 
 connect(process.env.MONGODB_URL);
