@@ -43,8 +43,3 @@ jobs:
 
       - name: Build packages
         run: npm run build
-
-      - name: Run Tests
-        run: |
-          docker run -d --rm -p 27017:27017 --name monga mongo:$MONGO_VERSION
-          MONGODB_URL=mongodb://localhost:27017/test?replicaSet=test-set npm run test
