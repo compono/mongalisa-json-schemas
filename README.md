@@ -3,14 +3,14 @@
 This package adds JSON Schemas support for records validation in mongalisa
 
 ```
-npm add @shortlyster/mongalisa-json-schemas
+npm add @compono/mongalisa-json-schemas
 ```
 
 ## Basic Usage
 
 ```js
-const mongalisa = require('@shortlyster/mongalisa');
-const jsonSchemaSupport = require('@shrotlyster/mongalisa-json-schemas');
+const mongalisa = require('@compono/mongalisa');
+const jsonSchemaSupport = require('@compono/mongalisa-json-schemas');
 
 mongalisa.plugin(jsonSchemaSupport);
 
@@ -48,5 +48,3 @@ await users.create({ email: 'hack!' }); // throws ValidationError
 All code in this repository is the property of Compono Pty Ltd.
 
 Copyright (C) 2018 Compono Pty Ltd.
-
-

@@ -1,5 +1,7 @@
 name: Test
 on: push
+env:
+  MONGO_VERSION: 6.0.19
 jobs:
   run-test:
     name: Run test

@@ -1,5 +1,6 @@
 import Validator, { ValidationError as ValidatarError } from '@shortlyster/validatar';
-import { Controller, ValidationError } from '@shortlyster/mongalisa';
+import { ValidationError } from '@compono/mongalisa';
+import type { Controller } from '@compono/mongalisa';
 
 const isPlainObject = (value: any): boolean =>
   typeof value === 'object' && value !== null && value.toString() === '[object Object]';
