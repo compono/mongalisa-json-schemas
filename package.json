@@ -1,6 +1,6 @@
 {
   "name": "@compono/mongalisa-json-schemas",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "JSON Schemas based validation support for mongalisa",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
