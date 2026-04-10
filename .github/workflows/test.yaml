@@ -5,7 +5,7 @@ env:
 jobs:
   run-test:
     name: Run test
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     permissions:
       id-token: write
       contents: write
